@@ -76,10 +76,7 @@ export default function Login() {
           </Link>
         </p>
 
-        {/* Demo credentials hint */}
-        <div style={{ marginTop: '1.5rem', padding: '0.85rem', background: '#f0f9ff', borderRadius: '0.5rem', fontSize: '0.78rem', color: '#0369a1' }}>
-          <strong>Demo Admin:</strong> admin@platform.com / Admin@1234
-        </div>
+        
       </div>
     </div>
   );

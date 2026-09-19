@@ -754,6 +754,14 @@ tbody tr:hover td { background: var(--gray-50); }
   overflow: hidden;
 }
 
+/* Hide left info panel on tablet/mobile */
+@media (max-width: 768px) {
+  /* Login/Register left panel */
+  [data-panel="left"] { display: none !important; }
+  [data-panel="wrapper"] { max-width: 440px !important; border-radius: 1.5rem !important; }
+  [data-panel="right"] { width: 100% !important; padding: 1.5rem !important; }
+}
+
 /* Left decorative panel */
 .auth-panel {
   flex: 1;

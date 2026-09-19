@@ -10,9 +10,20 @@ const normalizeApiURL = (value) => {
 
 const fallbackBaseURL = (() => {
   if (process.env.REACT_APP_API_URL) return normalizeApiURL(process.env.REACT_APP_API_URL);
-  if (typeof window !== 'undefined' && window.location.hostname.includes('vercel.app')) {
-    return `${window.location.origin}/api`;
+
+  if (typeof window !== 'undefined') {
+    const hostname = window.location.hostname;
+    const knownBackendHost = 'https://invoice-bd-delta.vercel.app/api';
+
+    if (hostname.includes('invoice-fd') || hostname.includes('invoice-fd-psi') || hostname.includes('invoice-bd-delta')) {
+      return knownBackendHost;
+    }
+
+    if (hostname.includes('vercel.app')) {
+      return `${window.location.origin}/api`;
+    }
   }
+
   return '/api';
 })();
 

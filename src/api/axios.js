@@ -1,7 +1,15 @@
 import axios from 'axios';
 
+const normalizeApiURL = (value) => {
+  if (!value) return '';
+  const withProtocol = /^https?:\/\//i.test(value) ? value : `https://${value}`;
+  return withProtocol.replace(/\/+$/, '').endsWith('/api')
+    ? withProtocol.replace(/\/+$/, '')
+    : `${withProtocol.replace(/\/+$/, '')}/api`;
+};
+
 const fallbackBaseURL = (() => {
-  if (process.env.REACT_APP_API_URL) return process.env.REACT_APP_API_URL;
+  if (process.env.REACT_APP_API_URL) return normalizeApiURL(process.env.REACT_APP_API_URL);
   if (typeof window !== 'undefined' && window.location.hostname.includes('vercel.app')) {
     return `${window.location.origin}/api`;
   }

@@ -747,8 +747,10 @@ tbody tr:hover td { background: var(--gray-50); }
 .auth-page {
   min-height: 100vh;
   display: flex;
-  align-items: stretch;
-  background: #0f172a;
+  align-items: center;
+  justify-content: center;
+  background: #f0f4f8;
+  padding: 1rem;
   overflow: hidden;
 }
 

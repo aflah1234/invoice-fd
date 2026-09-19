@@ -1,7 +1,15 @@
 import axios from 'axios';
 
+const fallbackBaseURL = (() => {
+  if (process.env.REACT_APP_API_URL) return process.env.REACT_APP_API_URL;
+  if (typeof window !== 'undefined' && window.location.hostname.includes('vercel.app')) {
+    return `${window.location.origin}/api`;
+  }
+  return '/api';
+})();
+
 const API = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || '/api',
+  baseURL: fallbackBaseURL,
 });
 
 // Attach JWT token to every request
